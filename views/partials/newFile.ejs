@@ -1,0 +1,23 @@
+ <div id="newFileDiv" class="modal hidden">
+    <div class="corner-triangle"></div>
+    
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="formHead"><h1>Add a new File</h1></div>
+
+    <div class="formRow">
+      <label for="filename">Name:</label>
+      <input  id="filename"  name="filename"  placeholder="filename"  type="text" />
+    </div>
+    <div class="formRow">
+      <input  id="file"  name="file"  placeholder="file"  type="file" />
+    </div>
+    <div class="formRow">
+      <input id="folderId" name="folderId" type="hidden" value="<%= folder?.id %>" />
+    </div>
+      <div class="controls">
+        <button type="submit">Create</button>
+        <button type="reset" class="newFileDivButton">Cancel</button>
+      </div>
+    </form>
+
+  </div>

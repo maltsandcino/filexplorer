@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+<body>
+      <%- include('partials/nav') %>
+    <h1 class="mleft">Hey <%= user.username %>, here is your link:</h1>
+    <span class="flex-col-center mleft"><span class="textLink"><a href="/files/<%= token.token %>"><%= base_url %>/files/<%= token.token %></a></span></span>
+
+    <h3 class="mleft">This link is valid until <span class="textLink"><%= new Date(token.expiresAt).toLocaleString("en-US", {
+       year: "numeric",
+       month: "short",
+       day: "numeric",
+       hour: "2-digit",
+       minute: "2-digit"
+     }) %></span> and will link users to this folder: <span class="textLink"><a href="/folder/<%= folder.id %>"><%= folder?.name %></a></span>.</h3>
+    <h3 class="mleft">To go back to your folder, <span class="textLink"><a href="/folder/<%= folder.id %>">click here</a></span>.</h3>
+    
+    </body>
+</html>
+<script src="/script.js" defer></script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+<body>
+      <%- include('partials/nav') %>
+     <% if (user) {%>  
+    <h1 class="mleft">Hey <%= user.username %>, these are your files</h1>
+    <div class="folderSpace">
+        <div class="path">
+            <% if (folder?.parentId) { %>
+                <a href="/folder/<%= folder?.parent?.id %>"><%= folder?.parent?.name || "cd .." %></a>
+            <% } %>
+            / <% if (folder?.name) { %>
+              <%= folder.name %>
+              <% } %>            
+        </div>
+        <div class="mainSpace">
+            <div class="files">
+              <% files?.map((file) => { %>
+                <div class="folder">
+                   <a href="<%= file?.link %>" download="get-my-file" class="flex-col-center">
+                  <img src="/file.png">
+                  <div class="name">
+                    <%= file.title %> 
+                  </div>
+                  </a>
+                </div>
+              <% }) %>
+              <div class="folder newFileDivButton new">
+                  <img src="/plus.png">
+                  <div class="name">
+                    New File
+                  </div>
+                </div>
+            </div>
+            <div class="subfolders">
+              <% subfolders?.map((folder) => { %>
+                <div class="folder">
+                   <a href="/folder/<%= folder.id %>" class="flex-col-center">
+                  <img src="/folder.png">
+                  <div class="name">
+                  
+                    <%= folder.name %> 
+                  </div>
+                  </a>
+                </div>
+                
+              <% }) %>
+              <div class="folder new" id="newFolder">
+                  <img src="/plus.png">
+                  <div class="name">
+                    New Folder
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Partials for New Folder and New File -->
+    <%- include('partials/newFolder') %>
+    <%- include('partials/newFile') %>
+    <% if (files && files.length > 0) {%>
+    <h3 class="mleft">Want to share these files with someone? <span class="textLink shareButton"><a href="/share/<%= folder.id %>">Click Here.</a></span></h3>
+    <% } %>
+   
+  
+  <% } else { %>
+    <div class="nouser">
+    <h1><span class="textLink signupbutton" id="signupLink">Sign-Up</span> or <span class="textLink loginbutton" id="loginLink">Login</span> to start storing and sharing files.</h1>
+    <img src="share.png" class="shareimage">
+</div>
+
+<%- include('partials/login') %>
+<%- include('partials/signup') %>
+    
+  <% } %>
+    
+</body>
+</html>
+<script src="/script.js" defer></script>

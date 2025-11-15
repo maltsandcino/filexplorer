@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+<body>
+      <%- include('partials/nav') %>
+    <% if (expired) { %>
+        <h1 class="mleft">Sorry, this token is expired. Ask <%= username %> to create a new link.</h1>
+    <% } else { %>
+    <h1 class="mleft">Hey, these are the files coming from <%= username %> </h1>
+    <div class="folderSpace">
+        <div class="path">
+              <% if (folder?.name) { %>
+              <%= folder.name %>
+              <% } %>            
+        </div>
+        <div class="mainSpace">
+            <div class="files">
+              <% files.map((file) => { %>
+                <div class="folder">
+                   <a href="<%= file?.link %>" download="get-my-file" class="flex-col-center">
+                  <img src="/file.png">
+                  <div class="name">
+                    <%= file.title %> 
+                  </div>
+                  </a>
+                </div>
+              <% }) %>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <%- include('partials/login') %>
+    <%- include('partials/signup') %>
+        </body>
+</html>
+<script src="/script.js" defer></script>

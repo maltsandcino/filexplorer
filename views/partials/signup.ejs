@@ -1,0 +1,27 @@
+<div id="signupmodal" class="modal <% if (!signuperror) { %> hidden <% } %>">
+    <div class="corner-triangle"></div>
+    <form action="/signup" method="POST">
+    <div class="formHead"><h1>Signup to Filexplorer</h1></div>
+    <% if (signuperror) { %>
+    <div class="errors"><%= signuperror %></div>
+    <% } %>
+
+    <div class="formRow">
+      <label for="username-signup">Username</label>
+      <input  id="username-signup"  name="username"  placeholder="username"  type="text" />
+    </div>
+    <div class="formRow"> 
+      <label for="password-signup">Password</label>
+      <input id="password-signup" name="password" type="password" />
+    </div>
+    <div class="formRow">
+      <label for="email-signup">Email</label>
+      <input id="email-signup" name="email" type="email" />
+    </div>
+      <div class="controls">
+      <button type="submit">Sign Up!</button>
+      <button type="reset" class="closeSignupModal">Cancel</button>
+      </div>
+    </form>
+
+  </div>

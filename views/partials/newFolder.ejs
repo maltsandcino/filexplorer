@@ -1,0 +1,19 @@
+ <div id="newFolderDiv" class="modal hidden">
+    <div class="corner-triangle"></div>
+    <form action="/createFolder" method="POST">
+    <div class="formHead"><h1>Add a new Folder</h1></div>
+
+    <div class="formRow">
+      <label for="foldername">Name:</label>
+      <input  id="foldername"  name="foldername"  placeholder="foldername"  type="text" />
+    </div>
+    <div class="formRow">
+      <input id="parentId" name="parentId" type="hidden" value="<%= folder?.id %>" />
+    </div>
+      <div class="controls">
+        <button type="submit">Create</button>
+        <button type="reset" class="closeNewFolderDiv">Cancel</button>
+      </div>
+    </form>
+
+  </div>

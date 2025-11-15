@@ -1,0 +1,28 @@
+<div id="loginmodal" class="modal <% if (!message) { %> hidden <% } %>">
+    <div class="corner-triangle"></div>
+    <form action="/login" method="POST">
+    <div class="formHead"><h1>Login to Filexplorer</h1></div>
+    <% if (message) { %>
+    <div class="errors"><%= message %></div>
+    <% } %>
+
+    <div class="formRow">
+      <label for="username">Username</label>
+      <% if (username) { %>
+      <input  id="username"  name="username"  placeholder="username"  type="text"  value="<%= username %>"/>
+      <% } else { %>
+      <input  id="username"  name="username"  placeholder="username"  type="text" />
+      <% } %>
+
+    </div>
+    <div class="formRow">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" />
+    </div>
+      <div class="controls">
+      <button type="submit">Log In</button>
+      <button type="reset" class="closeModal">Cancel</button>
+      </div>
+    </form>
+
+  </div>

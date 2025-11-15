@@ -1,0 +1,13 @@
+<nav>
+    <h1>Filexplorer</h1>
+    <span class="pill"><a href="/">Home</a></span>   
+    <% if (user) {%>
+    <span class="pill"><a href="/logout">Logout</a></span>
+    <% } else { %>
+        <span class="pill signupbutton">Sign Up</span>
+        <span class="pill loginbutton" id="otherlogin">Log in
+        </span>
+    <%}%>
+    
+</nav>
+
