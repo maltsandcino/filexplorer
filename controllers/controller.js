@@ -148,6 +148,12 @@ exports.postSignup = async (req, res, next) => {
     const username = req.body.username.trim();
     const email = req.body.email.trim();
 
+    if (!email || !username || !hashedPassword){
+      req.flash('signuperror', "Please provide actual credentials.");
+      return res.redirect('/');
+
+    }
+
     const result = await prisma.user.create({
       data: {
         email,
@@ -178,6 +184,7 @@ exports.createFolder = async (req, res, next) => {
   
     const name = req.body.foldername;
     const parentId = parseInt(req.body.parentId);
+    console.log(req.user.id)
     const newFolder = await prisma.folder.create({
             data: {
               userId: req.user.id,
